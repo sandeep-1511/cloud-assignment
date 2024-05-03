@@ -1,0 +1,92 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Amazon EKS Cluster'
+
+Parameters:
+  ClusterName:
+    Type: String
+    Default: sandeep-cluster
+  NumberOfWorkerNodes:
+    Type: Number
+    Default: 1
+  WorkerNodesInstanceType:
+    Type: String
+    Default: t2.micro
+  KubernetesVersion:
+    Type: String
+    Default: 1.24
+
+Resources:
+
+  ###########################################
+  ## Roles
+  ###########################################
+  EksRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: my.eks.cluster.role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - eks.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+
+  EksNodeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: my.eks.node.role
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+        - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+        - "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+
+  ###########################################
+  ## Eks Cluster
+  ###########################################
+
+  EksCluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: !Ref ClusterName
+      Version: !Ref KubernetesVersion
+      RoleArn: !GetAtt EksRole.Arn
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - "sg-004e78ca576139c2f" # Wrap SecurityGroupIds in a list
+        SubnetIds: 
+          - "subnet-0dc233fe1311d6722" # Wrap SubnetIds in a list
+          - "subnet-02474db887d949b44"
+  ###########################################
+  ## Eks Nodegroup
+  ###########################################
+
+  EksNodegroup:
+    Type: AWS::EKS::Nodegroup
+    DependsOn: EksCluster
+    Properties:
+      ClusterName: !Ref ClusterName
+      NodeRole: !GetAtt EksNodeRole.Arn
+      ScalingConfig:
+        MinSize: 1
+        DesiredSize: 1
+        MaxSize: 1
+      Subnets: 
+        - "subnet-0dc233fe1311d6722" # Wrap Subnets in a list
+        - "subnet-02474db887d949b44" # Add the second subnet ID
+
