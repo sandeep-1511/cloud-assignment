@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello-container
+          image: public.ecr.aws/n2y5o7l2/hello-world:latest
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "200m"
+            limits:
+              cpu: "500m"
+
