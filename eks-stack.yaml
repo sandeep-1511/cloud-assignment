@@ -91,4 +91,4 @@ Resources:
         - "subnet-0dc233fe1311d6722" # Wrap Subnets in a list
         - "subnet-02474db887d949b44" # Add the second subnet ID
       InstanceTypes:
-        - t2.micro
+        - t2.medium
