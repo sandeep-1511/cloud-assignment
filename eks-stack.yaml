@@ -81,12 +81,14 @@ Resources:
     DependsOn: EksCluster
     Properties:
       ClusterName: !Ref ClusterName
+      NodegroupName: node-group
       NodeRole: !GetAtt EksNodeRole.Arn
       ScalingConfig:
-        MinSize: 1
-        DesiredSize: 1
-        MaxSize: 1
+        MinSize: 2
+        DesiredSize: 2
+        MaxSize: 2
       Subnets: 
         - "subnet-0dc233fe1311d6722" # Wrap Subnets in a list
         - "subnet-02474db887d949b44" # Add the second subnet ID
-
+      InstanceTypes:
+        - t2.micro
