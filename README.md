@@ -33,14 +33,15 @@ In step-1 i have created EKS cluster using Cloud formation
    VPC    
    CloudFormation
 4. Setup AWs Cli
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
+           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+           unzip awscliv2.zip
+           sudo ./aws/install
 
 5. I have provided the cloud formation templates usem them we can create eks cluster
  we need enter into our directory where our cloud formation templates are there 
-   ./create-eks-stack.sh
+              ./create-eks-stack.sh
 using above command we can start installing EKS cluster
+
 6.Once the cluster is created  Validate your cluster using by creating by checking nodes .
    ```sh 
    kubectl get nodes
@@ -55,7 +56,9 @@ once we get docker image we must ensure that we need to test by creating docker 
 once the container is created check with that port number and ip address in browser we can access the application .If every thing goes well.
 
 8. Now we need to push our docker image to ecr repo . first we need to create repository in ECR 
-         aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-number>.dkr.ecr.<your-region>.amazonaws.com
+
+           aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account- 
+           number>.dkr.ecr.<your-region>.amazonaws.com
 
        docker tag <local-image>:<tag> <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
 
