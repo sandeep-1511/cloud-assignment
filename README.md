@@ -96,8 +96,8 @@ By using below command we can get to clear weather HPA as created and configured
                -O /dev/null http://hello-service & sleep 0.0001; done"
 
 15. same thing applies for the second application Too. 
-once our application is deployed we can access it through our endpoint i.e loadbalancer, nodeport
-In order to isolate one application with other we use namespaces
+    once our application is deployed we can access it through our endpoint i.e loadbalancer, nodeport
+    In order to isolate one application with other we use namespaces.
 
 16. Now we need to create  HorizontalPodAutoscaler using manifest file and configure it with application . so that when load consumption increses more instances will be created.
 
