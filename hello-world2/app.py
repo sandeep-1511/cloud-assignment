@@ -1,7 +1,13 @@
-from flask import Flask
+<!DOCTYPE html>
+<html>
+<body>
 
-app = Flask(__name__)
+<h1>My first PHP page</h1>
 
-@app.route("/hello")
-def hello_world():
-    return "Hello, World!"
+<?php
+echo "Hello World!";
+echo "New Update!";
+?>
+
+</body>
+</html>
