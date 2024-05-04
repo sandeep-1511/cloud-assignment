@@ -74,7 +74,8 @@ once the container is created check with that port number and ip address in brow
 
 9. Now we need to  install metrics By using below command
 
-               kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+                kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
 10.  Run below command to check metrics is installed or not 
               Kubectl top nodes
 
