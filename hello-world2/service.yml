@@ -7,6 +7,6 @@ spec:
     app: hello
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 5000
-  type: NodePort 
+      port: 8080
+      targetPort: 80
+  type: LoadBalancer 
