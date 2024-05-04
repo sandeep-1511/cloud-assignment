@@ -68,9 +68,9 @@ Resources:
       RoleArn: !GetAtt EksRole.Arn
       ResourcesVpcConfig:
         SecurityGroupIds:
-          - "sg-004e78ca576139c2f" # Wrap SecurityGroupIds in a list
+          - "sg-004e78ca576139c2f" 
         SubnetIds: 
-          - "subnet-0dc233fe1311d6722" # Wrap SubnetIds in a list
+          - "subnet-0dc233fe1311d6722" 
           - "subnet-02474db887d949b44"
   ###########################################
   ## Eks Nodegroup
@@ -88,7 +88,7 @@ Resources:
         DesiredSize: 2
         MaxSize: 2
       Subnets: 
-        - "subnet-0dc233fe1311d6722" # Wrap Subnets in a list
-        - "subnet-02474db887d949b44" # Add the second subnet ID
+        - "subnet-0dc233fe1311d6722" 
+        - "subnet-02474db887d949b44" 
       InstanceTypes:
         - t2.medium
