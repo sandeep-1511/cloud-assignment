@@ -44,20 +44,22 @@ using above command we can start installing EKS cluster
 6.Once the cluster is created  Validate your cluster using by creating by checking nodes .
    ```sh 
    kubectl get nodes
-  aws eks update-kubeconfig --region region-code --name my-cluster
+   aws eks update-kubeconfig --region region-code --name my-cluster
+
 7.If we everything working properly now we need to create our hello world application.
   we need to get in application directory where our files are present and in order to build the application we need to create Dockerfile.
 once Dockerfile is created we need to start building the docker image 
-    docker build -t hello-world .
+        docker build -t hello-world .
 once we get docker image we must ensure that we need to test by creating docker container
-       docker container run -dt -p 80:3000 hello-world
-once the container is created check with that port number and ip address in browser we can access the application .If every thing goes well
+        docker container run -dt -p 80:3000 hello-world
+once the container is created check with that port number and ip address in browser we can access the application .If every thing goes well.
+
 8. Now we need to push our docker image to ecr repo . first we need to create repository in ECR 
-     aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-number>.dkr.ecr.<your-region>.amazonaws.com
+         aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-number>.dkr.ecr.<your-region>.amazonaws.com
 
-docker tag <local-image>:<tag> <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
+       docker tag <local-image>:<tag> <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
 
-docker push <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
+       docker push <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
 
-By using above commands we can push our Docker image to Ecr repo
+ By using above commands we can push our Docker image to Ecr repo
 9. 
