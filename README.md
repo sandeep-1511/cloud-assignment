@@ -66,7 +66,7 @@ once the container is created check with that port number and ip address in brow
            aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account- 
            number>.dkr.ecr.<your-region>.amazonaws.com
 
-       docker tag <local-image>:<tag> <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
+           docker tag hello-world:latest public.ecr.aws/n2y5o7l2/hello-world:latest
 
        docker push <your-account-number>.dkr.ecr.<your-region>.amazonaws.com/<repository-name>:<tag>
 
