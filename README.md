@@ -33,6 +33,7 @@ In step-1 i have created EKS cluster using Cloud formation
    VPC    
    CloudFormation
 4. Setup AWs Cli
+
            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
            unzip awscliv2.zip
            sudo ./aws/install
@@ -50,8 +51,10 @@ using above command we can start installing EKS cluster
 7.If we everything working properly now we need to create our hello world application.
   we need to get in application directory where our files are present and in order to build the application we need to create Dockerfile.
 once Dockerfile is created we need to start building the docker image 
+
         docker build -t hello-world .
 once we get docker image we must ensure that we need to test by creating docker container
+
         docker container run -dt -p 80:3000 hello-world
 once the container is created check with that port number and ip address in browser we can access the application .If every thing goes well.
 
