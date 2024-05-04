@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: hello-container
-          image: sandeeppunna/php-hello
+          image: public.ecr.aws/n2y5o7l2/hello-world:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           resources:
             requests:
               cpu: "200m"
