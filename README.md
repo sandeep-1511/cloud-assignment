@@ -38,7 +38,7 @@ In step-1 i have created EKS cluster using Cloud formation
            unzip awscliv2.zip
            sudo ./aws/install
 
-5. I have provided the cloud formation templates usem them we can create eks cluster
+5. I have provided the CLOUDFORMATION templates usem them we can create eks cluster
  we need enter into our directory where our cloud formation templates are there 
               ./create-eks-stack.sh
 using above command we can start installing EKS cluster
@@ -100,11 +100,18 @@ once our application is deployed we can access it through our endpoint i.e loadb
 
 16. Now we need to create  HorizontalPodAutoscaler using manifest file and configure it with application . so that when load consumption increses more instances will be created.
 
-By using below command we can get to clear weather HPA as created and configured correctly
+17. By using below command we can get to clear weather HPA as created and configured correctly
 
      kubectl get all/ kubectl get hpa
 
-17. So in order to test load on our application we need to run this command this will stress our application by giving number of requests once consumption increses our target new 
+18. So in order to test load on our application we need to run this command this will stress our application by giving number of requests once consumption increses our target new 
 
            kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while true; do wget -q 
             -O /dev/null http://hello-service & sleep 0.0001; done"
+
+19. To delete this cluster through CLOUDFORMATION we need run below command 
+
+              ./delete-eks-stack.sh
+20. After successful deleting cluster check if any resources pending in order to reduce the cost .
+21.  I have done entire thing through CLOUDFORMATION but i also provided terraform file to create eks cluster optionally in order to do it muliple clouds .
+22. I have shared scren shots of application hosting and Load testing for hello woprld application how replicas are created if cpu consumption reaches 50%. please have a look at those screenshots
