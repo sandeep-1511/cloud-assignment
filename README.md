@@ -109,7 +109,7 @@ By using below command we can get to clear weather HPA as created and configured
 18. So in order to test load on our application we need to run this command this will stress our application by giving number of requests once consumption increses our target new 
 
            kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while true; do wget -q 
-            -O /dev/null http://hello-service & sleep 0.0001; done"
+            -O /dev/null http://hello-service-2 & sleep 0.0001; done"
 
 19. To delete this cluster through CLOUDFORMATION we need run below command 
 
