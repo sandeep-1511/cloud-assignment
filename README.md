@@ -1,9 +1,6 @@
 # cloud
 
-NEW Zoho logins for DevOps
-https://projects.zoho.in
-User:  devops@vavensoft.com
-Pass:  {h:rD46V52]O
+
 STEP-1
 In step-1 i have created EKS cluster using Cloud formation 
 #### Pre-requisites: 
