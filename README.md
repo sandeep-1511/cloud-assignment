@@ -1,6 +1,7 @@
 # cloud
-
-
+#29NGe726DOooYShFJS8NeGqdHJWzf3Wm
+#ATOACKTFwStOeF2C07TU7kS_6EJXXfMYDFYTiMOIE0KEdZ0sH4z7iocWq-kflC7ztGnU6BCCC6BC
+https://sandeepkonamars-1721303752297.atlassian.net/
 STEP-1
 In step-1 i have created EKS cluster using Cloud formation 
 #### Pre-requisites: 
